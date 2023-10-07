@@ -20,7 +20,7 @@ const Banner = () => {
             <h1 className='text-[5vw] text-white font-semibold bg-[#18b384a9] py-6 px-7 text-center'>Where Health <br /> Meets Happiness</h1>
             <button className='px-5 py-3 bg-slate-900 border-2 border-cyan-500 text-white text-2xl rounded-3xl hover:text-cyan-500 transition-transform hover:scale-125 w-[200px] mx-auto'>Get Started</button>
             </div>
-            <dir className="absolute w-full h-40 bottom-[-20px] bg-gradient-to-t from-[#23252b] to-transparent"></dir>
+            <dir className="absolute w-full h-40 bottom-[-18px] bg-gradient-to-t from-[#23252b] to-transparent"></dir>
         </div>
     );
 };
