@@ -10,7 +10,6 @@ import Trainer from "../Pages/Trainer";
 import Login from "../Pages/Login";
 import Register from "../Pages/Register";
 
-
 const Router = createBrowserRouter([
     {
         path:'/',
@@ -18,7 +17,7 @@ const Router = createBrowserRouter([
         children:[
             {
                 path:'/',
-                element:<Home></Home>
+                element:<Home></Home>,
             },
             {
                 path:'/about',
@@ -26,7 +25,7 @@ const Router = createBrowserRouter([
             },
             {
                 path:'/service',
-                element:<Service></Service>
+                element:<Service></Service>,
             },
             {
                 path:'/contact',
