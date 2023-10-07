@@ -45,9 +45,9 @@ const Trainer = () => {
           ]
     };
     const links = <div className="flex justify-center gap-7 mt-2">
-        <a href="" className='p-3 bg-white rounded-full'><FaFacebookF className='text-blue-700 text-xl'></FaFacebookF></a>
-        <a href="" className='p-3 bg-white rounded-full'><FaTwitter className='text-blue-700 text-xl'></FaTwitter></a>
-        <a href="" className='p-3 bg-white rounded-full'><FaInstagram className='text-blue-700 text-xl'></FaInstagram></a>
+        <a href="https://www.facebook.com/" className='p-3 bg-slate-300 rounded-full'><FaFacebookF className='text-blue-700 text-xl'></FaFacebookF></a>
+        <a href="https://twitter.com/" className='p-3 bg-slate-300 rounded-full'><FaTwitter className='text-blue-500 text-xl'></FaTwitter></a>
+        <a href="" className='p-3 bg-slate-300 rounded-full'><FaInstagram className='text-pink-700 text-xl'></FaInstagram></a>
     </div>
     return (
         <div className='my-20 mx-7'>
