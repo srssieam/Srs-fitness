@@ -12,7 +12,7 @@ const Navbar = () => {
         <li><NavLink to='/programs'>Your Programs</NavLink></li>
     </>
     return (
-        <div className="navbar bg-base-100">
+        <div className="navbar bg-[#1b1b1b] py-6">
             <div className="navbar-start">
                 <div className="dropdown">
                     <label tabIndex={0} className="btn btn-ghost lg:hidden">
