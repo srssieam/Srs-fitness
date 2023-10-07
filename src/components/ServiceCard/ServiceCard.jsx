@@ -6,7 +6,7 @@ const ServiceCard = ({serviceInfo}) => {
     return (
 
         <div className="card card-compact bg-base-100 border shadow-cyan-700 shadow-xl">
-            <figure className="h-[250px]"><img src={image} alt="img" className="h-full w-full" /></figure>
+            <figure className="h-[250px]"><img src={image} alt="img" className="h-full w-full transition-transform hover:scale-125" /></figure>
             <div className="card-body">
                 <h2 className="card-title">{title}</h2>
                 <p>{description}</p>
