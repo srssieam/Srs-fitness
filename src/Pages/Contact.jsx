@@ -7,7 +7,7 @@ const Contact = () => {
         e.preventDefault();
         swal.fire(
             'Good job!',
-            'You clicked the button!',
+            'You successfully submitted!',
             'success'
           )
     }
