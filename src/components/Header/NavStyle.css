@@ -1,0 +1,20 @@
+li a{
+    color:white;
+    text-decoration: none;
+    padding: 8px 15px;
+}
+li a:hover{
+    border-radius: 5px;
+    box-shadow: 0 0 5px #33ffff,
+                0 0 5px #66ffff;
+    color:cyan;
+}
+li a.active{
+    border-radius: 5px;
+    box-shadow: 0 0 5px #33ffff,
+                0 0 5px #66ffff;
+    color:cyan;
+}
+li a.active a{
+    color:cyan;
+}
