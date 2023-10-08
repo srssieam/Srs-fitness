@@ -11,12 +11,14 @@ import Login from "../Pages/Login";
 import Register from "../Pages/Register";
 import ServiceDetails from "../Pages/ServiceDetails";
 import PrivateRoute from "./PrivateRoute";
+import ErrorPage from "../Pages/ErrorPage";
 
 
 const Router = createBrowserRouter([
     {
         path:'/',
         element:<Root></Root>,
+        errorElement:<ErrorPage></ErrorPage>,
         children:[
             {
                 path:'/',
