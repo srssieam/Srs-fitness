@@ -2,7 +2,7 @@ import loginBg from '../assets/loginbg.jpg'
 import { MdEmail } from 'react-icons/Md';
 import { FaLock } from 'react-icons/Fa';
 import { FcGoogle } from 'react-icons/Fc';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useContext, useState } from 'react';
 import { AuthContext } from '../Provider/AuthProvider';
 import Swal from 'sweetalert2';
@@ -19,6 +19,12 @@ const loginStyle = {
 const Login = () => {
     const { userLogin, googleLogin } = useContext(AuthContext);
     const [loginError, setLoginError] = useState(null);
+    const location = useLocation();
+    const navigate = useNavigate();
+    console.log('from login page', location)
+
+    console.log(window.location)
+
 
     const handleLogin = (e) => {
         e.preventDefault();
@@ -36,7 +42,8 @@ const Login = () => {
                     'Login Successful',
                     'Thank you for being with us',
                     'success'
-                )
+                );
+                navigate(location?.state ? location.state : '/')
             })
             .catch(err => {
                 console.log(err)
@@ -59,12 +66,15 @@ const Login = () => {
         googleLogin()
             .then(res => {
                 console.log(res.user)
+                navigate(location?.state ? location.state : '/')
             })
             .catch(err => {
                 console.log(err)
             })
-        
+
     }
+
+
     return (
         <div style={loginStyle}>
             <div className='md:flex justify-between items-center h-[100%] w-full py-10'>

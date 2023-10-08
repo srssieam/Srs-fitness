@@ -10,7 +10,8 @@ import Trainer from "../Pages/Trainer";
 import Login from "../Pages/Login";
 import Register from "../Pages/Register";
 import ServiceDetails from "../Pages/ServiceDetails";
-import PrivateRout from "./PrivateRoute";
+import PrivateRoute from "./PrivateRoute";
+
 
 const Router = createBrowserRouter([
     {
@@ -31,7 +32,7 @@ const Router = createBrowserRouter([
             },
             {
                 path:'/service-details/:id',
-                element:<PrivateRout><ServiceDetails></ServiceDetails></PrivateRout>,
+                element:<PrivateRoute><ServiceDetails></ServiceDetails></PrivateRoute>,
                 loader:()=>fetch('/serviceData.json')
             },
             {
@@ -44,11 +45,11 @@ const Router = createBrowserRouter([
             },
             {
                 path:'/schedule',
-                element:<PrivateRout><Schedule></Schedule></PrivateRout>
+                element:<PrivateRoute><Schedule></Schedule></PrivateRoute>
             },
             {
                 path:'/programs',
-                element:<PrivateRout><Programs></Programs></PrivateRout>
+                element:<PrivateRoute><Programs></Programs></PrivateRoute>
             },
             {
                 path:'/login',

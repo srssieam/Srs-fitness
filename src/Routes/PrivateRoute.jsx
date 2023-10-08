@@ -1,11 +1,12 @@
 import { useContext } from "react";
-
-import { Navigate } from "react-router-dom";
+import { Navigate, useLocation } from "react-router-dom";
 import { AuthContext } from "../Provider/AuthProvider";
 import { ThreeCircles } from "react-loader-spinner";
 
-const PrivateRout = ({ children }) => {
+const PrivateRoute = ({ children }) => {
     const { user, loading } = useContext(AuthContext);
+    const location = useLocation();
+    console.log(location.pathname)
     if (loading) {
         return (
             <div className="w-full h-[80vh] flex items-center justify-center">
@@ -27,7 +28,8 @@ const PrivateRout = ({ children }) => {
     if (user) {
         return (children)
     }
-    return <Navigate to='/login'></Navigate>
+
+    return <Navigate state={location.pathname} to="/login"></Navigate>
 };
 
-export default PrivateRout;
+export default PrivateRoute;
