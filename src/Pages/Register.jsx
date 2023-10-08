@@ -2,8 +2,9 @@ import registerBg from '../assets/ragisterbg.jpg'
 import { MdEmail } from 'react-icons/Md';
 import { FaLock, FaUserAlt } from 'react-icons/Fa';
 import { Link } from 'react-router-dom';
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import { AuthContext } from '../Provider/AuthProvider';
+import Swal from 'sweetalert2';
 
 const regiStyle = {
     background: `url(${registerBg})`,
@@ -15,6 +16,7 @@ const regiStyle = {
     backgroundAttachment: 'fixed',
 }
 const Register = () => {
+    const [errorMessege, setErrorMessege]=useState('')
     const {createUser}= useContext(AuthContext)
 
     const handleRegister = (e)=>{
@@ -23,6 +25,24 @@ const Register = () => {
         const email = e.target.email.value;
         const password = e.target.password.value;
         // console.log(email,password)
+
+        // password validation
+        if(!/^(?=.*[A-Z])(?=.*[!@#$%^&*()_+{}\[\]:;<>,.?~\\-]).{6,}$/.test(password)){
+            setErrorMessege('Your password should have at least one uppercase letter, one special character and not less then 6 character')
+            Swal.fire({
+                icon: 'error',
+                title: 'Registration failed!',
+                text: ' try again',
+              })
+            return;
+        }
+
+        // sweet alert for successful registration
+        Swal.fire(
+            'Registration Successful',
+            'Thank you for being with us',
+            'success'
+          )
 
         createUser(email,password)
             .then(res =>{
@@ -36,6 +56,7 @@ const Register = () => {
         e.target.name.value = '';
         e.target.email.value = '';
         e.target.password.value = '';
+        setErrorMessege('');
 
     }
     return (
@@ -76,6 +97,9 @@ const Register = () => {
                                 <input type="password" name="password" id="password" className='outline-none bg-transparent w-full px-2 py-1' required />
                                 <FaLock className='text-2xl text-cyan-500'></FaLock>
                             </div>
+                        </div>
+                        <div>
+                            <p className='text-red-700 text-2xl font-semibold'>{errorMessege}</p>
                         </div>
                         <div>
                             <p className='text-white text-lg'>Already have account ? <Link to="/login" className='hover:underline text-cyan-500'>Login</Link> please.</p>
