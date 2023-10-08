@@ -32,7 +32,7 @@ const Login = () => {
                 console.log(res.user)
                 setLoginError(null)
                 Swal.fire(
-                    'Registration Successful',
+                    'Login Successful',
                     'Thank you for being with us',
                     'success'
                 )

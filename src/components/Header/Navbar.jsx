@@ -5,7 +5,7 @@ import { AuthContext } from "../../Provider/AuthProvider";
 import defaultUser from "../../assets/defaultUser.jpg"
 
 const Navbar = () => {
-    const { user } = useContext(AuthContext);
+    const { user, userLogout } = useContext(AuthContext);
     console.log(user)
     const navLink = <>
         <li><NavLink to='/'>Home</NavLink></li>
@@ -44,7 +44,7 @@ const Navbar = () => {
                             user.displayName ? <p>{user.displayName}</p> : <p>{user.email.slice(0,8)}</p>
                         }
                         </div>
-                        <button className="px-3 py-1 bg-gray-900 text-white rounded-md border hover:border-cyan-600 hover:text-cyan-400">Logout</button>
+                        <button onClick={()=>{userLogout()}} className="px-3 py-1 bg-gray-900 text-white rounded-md border hover:border-cyan-600 hover:text-cyan-400">Logout</button>
                     </div>
                     : <div className="navbar-end text-white font-semibold flex gap-2 md:mr-3">
                         <NavLink
