@@ -3,18 +3,29 @@ import "./NavStyle.css"
 import { useContext } from "react";
 import { AuthContext } from "../../Provider/AuthProvider";
 import defaultUser from "../../assets/defaultUser.jpg"
+import Swal from "sweetalert2";
 
 const Navbar = () => {
     const { user, userLogout } = useContext(AuthContext);
     console.log(user)
+
+    const handleLink=()=>{
+        if(!user){
+            Swal.fire({
+                icon: 'warning',
+                title: 'Login first',
+                text: 'You can not view this page without login ',
+              })
+        }
+    }
     const navLink = <>
         <li><NavLink to='/'>Home</NavLink></li>
         <li><NavLink to='/about'>About</NavLink></li>
         <li><NavLink to='/service'>Services</NavLink></li>
         <li><NavLink to='/trainer'>Our trainers</NavLink></li>
         <li><NavLink to='/contact'>Contact us</NavLink></li>
-        <li><NavLink to='/schedule'>Schedule</NavLink></li>
-        <li><NavLink to='/programs'>Your Programs</NavLink></li>
+        <li onClick={handleLink}><NavLink to='/schedule'>Schedule</NavLink></li>
+        <li onClick={handleLink}><NavLink to='/programs'>Your Programs</NavLink></li>
     </>
     return (
         <div className="navbar bg-[#1b1b1b] py-6">
