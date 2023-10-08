@@ -3,6 +3,10 @@ import { MdEmail } from 'react-icons/Md';
 import { FaLock } from 'react-icons/Fa';
 import { FcGoogle } from 'react-icons/Fc';
 import { Link } from 'react-router-dom';
+import { useContext, useState } from 'react';
+import { AuthContext } from '../Provider/AuthProvider';
+import Swal from 'sweetalert2';
+
 const loginStyle = {
     background: `url(${loginBg})`,
     width: '100%',
@@ -13,12 +17,42 @@ const loginStyle = {
     backgroundAttachment: 'fixed',
 }
 const Login = () => {
-    const handleLogin = (e)=>{
+    const { userLogin } = useContext(AuthContext);
+    const [loginError, setLoginError] = useState(null);
+
+    const handleLogin = (e) => {
         e.preventDefault();
         console.log('form submitted')
         const email = e.target.email.value;
         const password = e.target.password.value;
         // console.log(email,password)
+
+        userLogin(email, password)
+            .then(res => {
+                console.log(res.user)
+                setLoginError(null)
+                Swal.fire(
+                    'Registration Successful',
+                    'Thank you for being with us',
+                    'success'
+                )
+            })
+            .catch(err => {
+                console.log(err)
+                setLoginError('Wrong Email or Password !')
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Login Failed',
+                    text: 'Something went wrong!',
+                })
+            })
+
+        // clearing input fields after submission
+        e.target.name.value = '';
+        e.target.email.value = '';
+        e.target.password.value = '';
+
+
     }
     return (
         <div style={loginStyle}>
@@ -33,32 +67,37 @@ const Login = () => {
                         <h3 className='text:lg md:xl lg:text-3xl font-semibold py-5'>We are committed to <br /> bringing happiness into your life.</h3>
                     </div>
                 </div>
+
+
                 <div className='md:w-2/5 h-full flex items-center bg-transparent backdrop-blur-xl p-4 md:p-6 lg:p-11 md:mr-5 lg:mr-10 rounded-3xl'>
                     <div className='w-full'>
-                    <h1 className='text-xl md:text-2xl lg:text-4xl font-semibold py-2 md:py-3 lg:py-7 text-white'>Login</h1>
-                    <form className='md:space-y-3 lg:space-y-8' onSubmit={handleLogin}>
-                        <div>
-                            <label htmlFor="email" className=' text-white font-semibold text-lg lg:text-2xl'>Your Email : </label><br />
-                            <div className='flex items-center border-b-2 border-cyan-500'>
-                                <input type="email" name="email" id="email" className='text-white outline-none bg-transparent w-full px-2 py-1' required />
-                                <MdEmail className='text-2xl text-cyan-500'></MdEmail>
+                        <h1 className='text-xl md:text-2xl lg:text-4xl font-semibold py-2 md:py-3 lg:py-7 text-white'>Login</h1>
+                        <form className='md:space-y-3 lg:space-y-8' onSubmit={handleLogin}>
+                            <div>
+                                <label htmlFor="email" className=' text-white font-semibold text-lg lg:text-2xl'>Your Email : </label><br />
+                                <div className='flex items-center border-b-2 border-cyan-500'>
+                                    <input type="email" name="email" id="email" className='text-white outline-none bg-transparent w-full px-2 py-1' required />
+                                    <MdEmail className='text-2xl text-cyan-500'></MdEmail>
+                                </div>
                             </div>
-                        </div>
-                        <div>
-                            <label htmlFor="password" className=' text-white font-semibold text-lg lg:text-2xl'>Your Password : </label><br />
-                            <div className='flex items-center border-b-2 border-cyan-500'>
-                                <input type="password" name="password" id="password" className='text-white outline-none bg-transparent w-full px-2 py-1' required />
-                                <FaLock className='text-2xl text-cyan-500'></FaLock>
+                            <div>
+                                <label htmlFor="password" className=' text-white font-semibold text-lg lg:text-2xl'>Your Password : </label><br />
+                                <div className='flex items-center border-b-2 border-cyan-500'>
+                                    <input type="password" name="password" id="password" className='text-white outline-none bg-transparent w-full px-2 py-1' required />
+                                    <FaLock className='text-2xl text-cyan-500'></FaLock>
+                                </div>
                             </div>
-                        </div>
-                        <div>
-                            <p className='text-white text-lg'>Do not have any account ? <Link to="/register" className='hover:underline text-cyan-500'>register</Link> now.</p>
-                        </div>
-                        <div>
-                            <input type="submit" value="Login" className='btn text-xl bg-slate-900 normal-case font-semibold text-cyan-500 hover:border-cyan-400' />
-                        </div>
-                    </form>
-                    <button className='mt-4 hover:scale-110 transition-transform flex gap-4 items-center px-4 py-2 text-white bg-transparent border border-cyan-600 rounded-lg'>Login with google <FcGoogle className='text-xl'></FcGoogle></button>
+                            <div>
+                                <p className='text-red-700 text-lg lg:text-2xl font-semibold'>{loginError}</p>
+                            </div>
+                            <div>
+                                <p className='text-white text-lg'>Do not have any account ? <Link to="/register" className='hover:underline text-cyan-500'>register</Link> now.</p>
+                            </div>
+                            <div>
+                                <input type="submit" value="Login" className='btn text-xl bg-slate-900 normal-case font-semibold text-cyan-500 hover:border-cyan-400' />
+                            </div>
+                        </form>
+                        <button className='mt-4 hover:scale-110 transition-transform flex gap-4 items-center px-4 py-2 text-white bg-transparent border border-cyan-600 rounded-lg'>Login with google <FcGoogle className='text-xl'></FcGoogle></button>
                     </div>
                 </div>
             </div>

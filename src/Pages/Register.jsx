@@ -73,6 +73,8 @@ const Register = () => {
                         <h3 className='text:lg md:xl lg:text-3xl font-semibold py-5'>We are committed to <br /> bringing happiness into your life.</h3>
                     </div>
                 </div>
+
+
                 <div className='md:w-2/5 h-full flex items-center bg-transparent backdrop-blur-xl  p-4 md:p-6 lg:p-11 md:mr-5 lg:mr-10 rounded-3xl'>
                     <div className='w-full'>
                     <h1 className='text-xl md:text-2xl lg:text-4xl font-semibold py-2 md:py-3 lg:py-7 text-white'>Register</h1>
@@ -99,7 +101,7 @@ const Register = () => {
                             </div>
                         </div>
                         <div>
-                            <p className='text-red-700 text-2xl font-semibold'>{errorMessege}</p>
+                            <p className='text-red-700 text-lg lg:text-2xl font-semibold'>{errorMessege}</p>
                         </div>
                         <div>
                             <p className='text-white text-lg'>Already have account ? <Link to="/login" className='hover:underline text-cyan-500'>Login</Link> please.</p>
