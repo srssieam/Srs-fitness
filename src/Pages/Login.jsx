@@ -17,7 +17,7 @@ const loginStyle = {
     backgroundAttachment: 'fixed',
 }
 const Login = () => {
-    const { userLogin } = useContext(AuthContext);
+    const { userLogin, googleLogin } = useContext(AuthContext);
     const [loginError, setLoginError] = useState(null);
 
     const handleLogin = (e) => {
@@ -27,6 +27,7 @@ const Login = () => {
         const password = e.target.password.value;
         // console.log(email,password)
 
+        // email and password login
         userLogin(email, password)
             .then(res => {
                 console.log(res.user)
@@ -51,8 +52,18 @@ const Login = () => {
         e.target.name.value = '';
         e.target.email.value = '';
         e.target.password.value = '';
+    }
 
-
+    // google login
+    const handleGoogleLogin = () => {
+        googleLogin()
+            .then(res => {
+                console.log(res.user)
+            })
+            .catch(err => {
+                console.log(err)
+            })
+        
     }
     return (
         <div style={loginStyle}>
@@ -97,7 +108,7 @@ const Login = () => {
                                 <input type="submit" value="Login" className='btn text-xl bg-slate-900 normal-case font-semibold text-cyan-500 hover:border-cyan-400' />
                             </div>
                         </form>
-                        <button className='mt-4 hover:scale-110 transition-transform flex gap-4 items-center px-4 py-2 text-white bg-transparent border border-cyan-600 rounded-lg'>Login with google <FcGoogle className='text-xl'></FcGoogle></button>
+                        <button onClick={handleGoogleLogin} className='mt-4 hover:scale-110 transition-transform flex gap-4 items-center px-4 py-2 text-white bg-transparent border border-cyan-600 rounded-lg'>Login with google <FcGoogle className='text-xl'></FcGoogle></button>
                     </div>
                 </div>
             </div>

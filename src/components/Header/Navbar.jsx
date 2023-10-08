@@ -50,7 +50,7 @@ const Navbar = () => {
                 user ?
                     <div className="navbar-end text-white font-semibold flex gap-2 md:mr-3">
                         <div className="flex flex-col items-center">
-                        <img src={defaultUser} className="h-[35px] w-[35px] rounded-full" alt="" />
+                        <img src={user.photoURL? user.photoURL : defaultUser} className="h-[35px] w-[35px] rounded-full" alt="" />
                         {
                             user.displayName ? <p>{user.displayName}</p> : <p>{user.email.slice(0,8)}</p>
                         }
