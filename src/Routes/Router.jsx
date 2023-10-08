@@ -9,6 +9,7 @@ import Contact from "../Pages/Contact";
 import Trainer from "../Pages/Trainer";
 import Login from "../Pages/Login";
 import Register from "../Pages/Register";
+import ServiceDetails from "../Pages/ServiceDetails";
 
 const Router = createBrowserRouter([
     {
@@ -26,6 +27,11 @@ const Router = createBrowserRouter([
             {
                 path:'/service',
                 element:<Service></Service>,
+            },
+            {
+                path:'/service-details/:id',
+                element:<ServiceDetails></ServiceDetails>,
+                loader:()=>fetch('/serviceData.json')
             },
             {
                 path:'/contact',
