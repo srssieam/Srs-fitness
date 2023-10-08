@@ -27,6 +27,15 @@ const Navbar = () => {
         <li onClick={handleLink}><NavLink to='/schedule'>Schedule</NavLink></li>
         <li onClick={handleLink}><NavLink to='/programs'>Your Programs</NavLink></li>
     </>
+
+    const handleLogOut=()=>{
+        userLogout();
+        Swal.fire(
+            'Logout Successful',
+            'Thank you for being with us',
+            'success'
+          )
+    }
     return (
         <div className="navbar bg-[#1b1b1b] py-6">
             <div className="navbar-start">
@@ -55,7 +64,7 @@ const Navbar = () => {
                             user.displayName ? <p>{user.displayName}</p> : <p>{user.email.slice(0,8)}</p>
                         }
                         </div>
-                        <button onClick={()=>{userLogout()}} className="px-3 py-1 bg-gray-900 text-white rounded-md border hover:border-cyan-600 hover:text-cyan-400">Logout</button>
+                        <button onClick={handleLogOut} className="px-3 py-1 bg-gray-900 text-white rounded-md border hover:border-cyan-600 hover:text-cyan-400">Logout</button>
                     </div>
                     : <div className="navbar-end text-white font-semibold flex gap-2 md:mr-3">
                         <NavLink

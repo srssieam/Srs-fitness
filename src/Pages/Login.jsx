@@ -65,7 +65,12 @@ const Login = () => {
     const handleGoogleLogin = () => {
         googleLogin()
             .then(res => {
-                console.log(res.user)
+                console.log(res.user);
+                Swal.fire(
+                    'Login Successful',
+                    'Thank you for being with us',
+                    'success'
+                  )
                 navigate(location?.state ? location.state : '/')
             })
             .catch(err => {
