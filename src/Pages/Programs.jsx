@@ -11,7 +11,7 @@ const Programs = () => {
         if (programs) {
             setAddedPackages(programs)
         } else {
-            setNoPackagesFound('You have not enrolled any packages yes !!')
+            setNoPackagesFound('You have not enrolled any packages yet !!')
         }
     }, [])
     console.log(addedPackages)
@@ -19,7 +19,7 @@ const Programs = () => {
         <div>
             {
                 addedPackages.length > 0 ?
-                    <div className="h-[80vh] p-3 md:p-12">
+                    <div className="min-h-[80vh] p-3 md:p-12">
                         <p className="text-xl md:text-3xl font-semibold">Total programs to be completed: {addedPackages.length}</p>
                         {
                             addedPackages?.map(program => {

@@ -2,6 +2,8 @@ import registerBg from '../assets/ragisterbg.jpg'
 import { MdEmail } from 'react-icons/Md';
 import { FaLock, FaUserAlt } from 'react-icons/Fa';
 import { Link } from 'react-router-dom';
+import { useContext } from 'react';
+import { AuthContext } from '../Provider/AuthProvider';
 
 const regiStyle = {
     background: `url(${registerBg})`,
@@ -13,12 +15,28 @@ const regiStyle = {
     backgroundAttachment: 'fixed',
 }
 const Register = () => {
+    const {createUser}= useContext(AuthContext)
+
     const handleRegister = (e)=>{
         e.preventDefault();
         console.log('register')
         const email = e.target.email.value;
         const password = e.target.password.value;
         // console.log(email,password)
+
+        createUser(email,password)
+            .then(res =>{
+                console.log(res.user)
+            })
+            .catch(err =>{
+                console.log(err)
+            })
+
+        // clearing input fields after submission
+        e.target.name.value = '';
+        e.target.email.value = '';
+        e.target.password.value = '';
+
     }
     return (
         <div>
