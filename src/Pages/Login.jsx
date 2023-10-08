@@ -21,9 +21,9 @@ const Login = () => {
     const [loginError, setLoginError] = useState(null);
     const location = useLocation();
     const navigate = useNavigate();
-    console.log('from login page', location)
+    // console.log('from login page', location)
 
-    console.log(window.location)
+    // console.log(window.location)
 
 
     const handleLogin = (e) => {
@@ -36,7 +36,7 @@ const Login = () => {
         // email and password login
         userLogin(email, password)
             .then(res => {
-                console.log(res.user)
+                // console.log(res.user)
                 setLoginError(null)
                 Swal.fire(
                     'Login Successful',
@@ -46,7 +46,7 @@ const Login = () => {
                 navigate(location?.state ? location.state : '/')
             })
             .catch(err => {
-                console.log(err)
+                console.log(err.message,'from login')
                 setLoginError('Wrong Email or Password !')
                 Swal.fire({
                     icon: 'error',

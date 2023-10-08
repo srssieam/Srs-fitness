@@ -6,7 +6,7 @@ import { ThreeCircles } from "react-loader-spinner";
 const PrivateRoute = ({ children }) => {
     const { user, loading } = useContext(AuthContext);
     const location = useLocation();
-    console.log(location.pathname)
+    // console.log(location.pathname)
     if (loading) {
         return (
             <div className="w-full h-[80vh] flex items-center justify-center">
