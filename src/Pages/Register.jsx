@@ -22,6 +22,7 @@ const Register = () => {
     const handleRegister = (e)=>{
         e.preventDefault();
         console.log('register')
+        // const userName = e.target.name.value;
         const email = e.target.email.value;
         const password = e.target.password.value;
         // console.log(email,password)

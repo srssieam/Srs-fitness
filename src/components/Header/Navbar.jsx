@@ -1,7 +1,12 @@
 import { NavLink } from "react-router-dom";
 import "./NavStyle.css"
+import { useContext } from "react";
+import { AuthContext } from "../../Provider/AuthProvider";
+import defaultUser from "../../assets/defaultUser.jpg"
 
 const Navbar = () => {
+    const { user } = useContext(AuthContext);
+    console.log(user)
     const navLink = <>
         <li><NavLink to='/'>Home</NavLink></li>
         <li><NavLink to='/about'>About</NavLink></li>
@@ -29,21 +34,34 @@ const Navbar = () => {
                     {navLink}
                 </ul>
             </div>
-            <div className="navbar-end text-white font-semibold flex gap-2 md:mr-3">
-                <NavLink
-                    to="/login"
-                    className={({ isActive, isPending }) =>
-                    isPending ? "pending" : isActive ? "underline text-cyan-400" : "hover:underline hover:text-cyan-400"
-                }>Login
-                </NavLink>
-                <span>/</span>
-                <NavLink
-                    to="/register"
-                    className={({ isActive, isPending }) =>
-                    isPending ? "pending" : isActive ? "underline text-cyan-400" : "hover:underline hover:text-cyan-400"
-                }>Register
-                </NavLink>
-            </div>
+
+            {
+                user ?
+                    <div className="navbar-end text-white font-semibold flex gap-2 md:mr-3">
+                        <div className="flex flex-col items-center">
+                        <img src={defaultUser} className="h-[35px] w-[35px] rounded-full" alt="" />
+                        {
+                            user.displayName ? <p>{user.displayName}</p> : <p>{user.email.slice(0,8)}</p>
+                        }
+                        </div>
+                        <button className="px-3 py-1 bg-gray-900 text-white rounded-md border hover:border-cyan-600 hover:text-cyan-400">Logout</button>
+                    </div>
+                    : <div className="navbar-end text-white font-semibold flex gap-2 md:mr-3">
+                        <NavLink
+                            to="/login"
+                            className={({ isActive, isPending }) =>
+                                isPending ? "pending" : isActive ? "underline text-cyan-400" : "hover:underline hover:text-cyan-400"
+                            }>Login
+                        </NavLink>
+                        <span>/</span>
+                        <NavLink
+                            to="/register"
+                            className={({ isActive, isPending }) =>
+                                isPending ? "pending" : isActive ? "underline text-cyan-400" : "hover:underline hover:text-cyan-400"
+                            }>Register
+                        </NavLink>
+                    </div>
+            }
         </div>
     );
 };
