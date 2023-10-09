@@ -6,6 +6,9 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useContext, useState } from 'react';
 import { AuthContext } from '../Provider/AuthProvider';
 import Swal from 'sweetalert2';
+import 'aos/dist/aos.css';
+import AOS from 'aos';
+import { useEffect } from 'react';
 
 const loginStyle = {
     background: `url(${loginBg})`,
@@ -79,11 +82,14 @@ const Login = () => {
 
     }
 
+    useEffect(() => {
+        AOS.init();
+      }, [])
 
     return (
         <div style={loginStyle}>
             <div className='md:flex justify-between items-center h-[100%] w-full py-10'>
-                <div className='bg-transparent md:w-3/5 h-full flex flex-col justify-around px-5 md:px-8 lg:px-20 text-white'>
+                <div className='bg-transparent md:w-3/5 h-full flex flex-col justify-around px-5 md:px-8 lg:px-20 text-white' data-aos="fade-right"  data-aos-duration="2000">
                     <div>
                         <h1 className='text-2xl md:text-4xl lg:text-6xl font-semibold'>Welcome !</h1>
                         <p className='text-xl md:text-2 lg:text-4xl font-semibold md:py-3 lg:py-6'>To Srs Fitness</p>
@@ -95,7 +101,7 @@ const Login = () => {
                 </div>
 
 
-                <div className='md:w-2/5 h-full flex items-center bg-transparent backdrop-blur-xl p-4 md:p-6 lg:p-11 md:mr-5 lg:mr-10 rounded-3xl'>
+                <div className='md:w-2/5 h-full flex items-center bg-transparent backdrop-blur-xl p-4 md:p-6 lg:p-11 md:mr-5 lg:mr-10 rounded-3xl' data-aos="fade-left"  data-aos-duration="2000">
                     <div className='w-full'>
                         <h1 className='text-xl md:text-2xl lg:text-4xl font-semibold py-2 md:py-3 lg:py-7 text-white'>Login</h1>
                         <form className='md:space-y-3 lg:space-y-8' onSubmit={handleLogin}>

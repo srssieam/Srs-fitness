@@ -1,8 +1,13 @@
 import { FaFacebookF, FaTwitter, FaInstagram } from 'react-icons/Fa';
 import swal from 'sweetalert2'
-
+import 'aos/dist/aos.css';
+import AOS from 'aos';
+import { useEffect } from 'react';
 
 const Contact = () => {
+    useEffect(() => {
+        AOS.init();
+      }, [])
     const handleSubmit =(e)=>{
         e.preventDefault();
         swal.fire(
@@ -18,9 +23,9 @@ const Contact = () => {
     </div>
     return (
         <div className="my-14 mx-5">
-            <h1 className="mb-16 text-5xl text-center font-bold">Contact Us</h1>
+            <h1 className="mb-16 text-5xl text-center font-bold" data-aos="fade-down" data-aos-duration="2000">Contact Us</h1>
             <div className="flex flex-col md:flex-row gap-5 items-center lg:gap-11 bg-[#131212] p-11 rounded-xl shadow-lg shadow-cyan-600">
-                <div className='text-white space-y-4 flex-1'>
+                <div className='text-white space-y-4 flex-1' data-aos="fade-right"  data-aos-duration="2000">
                     <h3 className='text-4xl font-bold'>Srs Sieam</h3>
                     <p className='font-semibold text-2xl'>CEO (srsfitness)</p>
                     <address className='text-xl'>
@@ -32,7 +37,7 @@ const Contact = () => {
                     <p className='text-cyan-400 text-lg'>Email: <a href="" className='hover:underline'>srsfitness@gmail.com</a></p>
                     {links}
                 </div>
-                <div className='flex-1'>
+                <div className='flex-1' data-aos="fade-left"  data-aos-duration="2000">
                     <form className='text-xl' onSubmit={handleSubmit}>
                         <div className='flex flex-col lg:flex-row justify-between gap-4'>
                             <div className='flex-1'>

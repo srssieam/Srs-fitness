@@ -1,12 +1,18 @@
+import { useEffect } from "react";
 import { Link } from "react-router-dom";
-
+import 'aos/dist/aos.css';
+import AOS from 'aos';
 
 const ServiceCard = ({ serviceInfo }) => {
+
+    useEffect(() => {
+        AOS.init();
+      }, [])
     // console.log(serviceInfo)
     const { id, title, image, description, details, Price } = serviceInfo;
     return (
 
-        <div className="card card-compact bg-base-100 border shadow-cyan-700 shadow-xl">
+        <div className="card card-compact bg-base-100 border shadow-cyan-700 shadow-xl" data-aos="flip-up" data-aos-duration="2000">
             <figure className="h-[250px]"><img src={image} alt="img" className="h-full w-full transition-transform hover:scale-125" /></figure>
             <div className="card-body">
                 <h2 className="card-title">{title}</h2>
