@@ -13,7 +13,9 @@ const Service = () => {
         .then(data => setSevicesInfo(data))
     },[])
     useEffect(() => {
-        AOS.init();
+        AOS.init({
+            disable: window.innerWidth < 1000
+          });
       }, [])
     
     return (

@@ -6,10 +6,12 @@ import AOS from 'aos';
 const ServiceCard = ({ serviceInfo }) => {
 
     useEffect(() => {
-        AOS.init();
+        AOS.init({
+            disable: window.innerWidth < 1000
+          });
       }, [])
     // console.log(serviceInfo)
-    const { id, title, image, description, details, Price } = serviceInfo;
+    const { id, title, image, description, Price } = serviceInfo;
     return (
 
         <div className="card card-compact bg-base-100 border shadow-cyan-700 shadow-xl" data-aos="flip-up" data-aos-duration="2000">
