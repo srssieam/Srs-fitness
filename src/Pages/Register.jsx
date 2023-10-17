@@ -20,7 +20,7 @@ const regiStyle = {
 }
 const Register = () => {
     const [errorMessege, setErrorMessege]=useState('')
-    const {createUser}= useContext(AuthContext)
+    const {createUser}= useContext(AuthContext);
 
     const handleRegister = (e)=>{
         e.preventDefault();
